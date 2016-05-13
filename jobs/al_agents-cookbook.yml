@@ -1,0 +1,73 @@
+- job:
+    name: al_agents-cookbook
+    project-type: freestyle
+    description: 'verify that the al_agents-cookbook is in a state to push'
+    properties:
+      - github:
+          url: https://github.com/alertlogic/al_agents.git
+    scm:
+      - git:
+         url: https://github.com/alertlogic/al_agents.git
+         wipe-workspace: false
+         clean: true
+    builders:
+        - shell: |
+            #!/bin/bash
+            source "$HOME/.rvm/scripts/rvm"
+            set -e
+            rvm --force gemset delete 2.2.3@al_agents-cookbook
+            rvm use 2.2.3@al_agents-cookbook --create
+            if [ -f Gemfile ] ; then
+              gem install bundle
+              bundle install
+              bundle exec foodcritic .
+              bundle exec rubocop .
+              bundle exec rspec .
+              bundle exec kitchen verify
+            else
+              # install needed packages
+              sudo apt-get update
+              sudo apt-get -y install build-essential liblzma-dev zlib1g-dev
+
+              # install chefdk
+              chefdk=chefdk_0.13.21-1_amd64.deb
+              wget -nv -t 3 https://packages.chef.io/stable/ubuntu/12.04/$chefdk
+              sudo dpkg -i $chefdk
+              rm $chefdk
+
+              chef exec foodcritic .
+              chef exec rake spec
+              chef exec rspec .
+              chef exec kitchen verify
+            fi
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+          post-fail:
+            - shell: |
+                #!/bin/bash
+                if [ -f Gemfile ] ; then
+                  bundle exec kitchen list
+                  bundle exec kitchen destroy
+                else
+                  chef exec kitchen list
+                  chef exec kitchen destroy
+                  sudo apt-remove --purge -y install build-essential liblzma-dev zlib1g-dev
+                fi
+
+                rvm --force gemset delete 2.2.0@al_agents-cookbook
+    triggers:
+      - github-pull-request:
+          admin-list:
+            - jjasghar
+          build-desc-template: "Building al_agents-cookbook"
+          trigger-phrase: 'Run Rose.'
+          only-trigger-phrase: true
+          github-hooks: true
+          permit-all: false
+          auto-close-on-fail: false
+          allow-whitelist-orgs-as-admins: true
+          success-comment: "Huzzah! Tested and good, :heart: Rose"
+          failure-comment: "Something didn't playout how we wanted, love Rose"
+          error-comment: "ERROR something errored, you should investigate, love Rose"
