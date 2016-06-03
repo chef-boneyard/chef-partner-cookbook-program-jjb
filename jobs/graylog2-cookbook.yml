@@ -15,8 +15,8 @@
             #!/bin/bash
             source "$HOME/.rvm/scripts/rvm"
             set -e
-            rvm --force gemset delete 2.2.3@graylog2-cookbook
-            rvm use 2.2.3@graylog2-cookbook --create
+            rvm --force gemset delete 2.3.0@graylog2-cookbook
+            rvm use 2.3.0@graylog2-cookbook --create
             if [ -f Gemfile ] ; then
               gem install bundle
               bundle install
