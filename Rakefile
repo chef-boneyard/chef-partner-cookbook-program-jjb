@@ -3,10 +3,16 @@ require './bin/secrets.rb'
 
 desc "run the secrets.rb"
 task :secrets do
-  ruby "secrets.rb"
+  ruby "bin/secrets.rb"
 end
 
 desc "run the jjb application"
 task :jjb do
-  sh "jenkins-jobs --conf jenkins_jobs.ini update jobs/maas-cookbook-temp.yml"
+  sh "jenkins-jobs --conf ../jenkins_jobs.ini update jobs/temp/*"
+  #sh "rm jobs/temp*"
+end
+
+desc "clean up any temp files"
+task :clean do
+  sh "rm jobs/temp/*"
 end
