@@ -7,7 +7,7 @@ continually authenticated.
 ## Dealing with secrets/tokens with the JJB
 
 There is a way to switch out tokens and other secrets for your jobs with a
-couple rake tasks.
+rake task.
 
 You need to set up a `secrets.yml` with something like the following:
 
