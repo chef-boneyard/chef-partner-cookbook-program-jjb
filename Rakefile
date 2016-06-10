@@ -1,6 +1,6 @@
 require 'pathname'
 require './bin/secrets.rb'
-#task :default => [:secrets]
+task :default => [:secrets, :jjb]
 
 desc "run the secrets.rb"
 task :secrets do
@@ -14,7 +14,7 @@ task :jjb do
     file_name = absolute_path.basename
     sh "jenkins-jobs --conf ../jenkins_jobs.ini update jobs/temp/#{file_name}"
   end
-  #sh "rm jobs/temp/temp-*"
+  sh "rm jobs/temp/temp-*"
 end
 
 desc "clean up any temp files"
