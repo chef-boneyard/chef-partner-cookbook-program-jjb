@@ -11,6 +11,7 @@ You need to set up a `secrets.yml` with something like the following:
 
 ```yaml
 slack-auth-token: "KK5ZzeJhcMVBgM54_ANOTHER_FAKE_KEY_vTwZxJpuUYXetFnlha81EyH"
+slack-build-server-url: "KK5ZzeJhcMVBgM54_ANOTHER_FAKE_KEY_vTwZxJpuUYXetFnlha81EyH"
 ```
 
 - [alertlogic][alertlogic]
