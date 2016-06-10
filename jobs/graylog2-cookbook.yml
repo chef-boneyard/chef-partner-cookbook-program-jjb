@@ -32,3 +32,9 @@
                 rvm --force gemset delete 2.2.0@graylog2-cookbook
     triggers:
       - timed: "@midnight"
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'
