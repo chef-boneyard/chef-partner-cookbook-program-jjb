@@ -4,6 +4,15 @@ These are a collection of Jenkins Job builders for the [Chef Partner Cookbook Pr
 The goal is to get a build per [this search][search] and have the verification
 continually authenticated.
 
+There is a way to switch out tokens and other secrets for your jobs with a
+couple rake tasks.
+
+You need to set up a `secrets.yml` with something like the following:
+
+```yaml
+slack-auth-token: "KK5ZzeJhcMVBgM54_ANOTHER_FAKE_KEY_vTwZxJpuUYXetFnlha81EyH"
+```
+
 - [alertlogic][alertlogic]
 - [graylog2][graylog2]
 
