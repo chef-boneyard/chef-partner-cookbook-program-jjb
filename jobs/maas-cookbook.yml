@@ -41,6 +41,6 @@
     publishers:
       - slack:
           team-domain: 'chefio'
-          auth-token: 'faketoken'
-          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'SLACK-BUILD-SERVER-URL'
           room: '#cookbook-partner-prog'

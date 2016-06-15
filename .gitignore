@@ -1,1 +1,4 @@
 jobs/jenkins_jobs.ini
+jobs/temp/*
+secrets.yml
+Gemfile.lock
