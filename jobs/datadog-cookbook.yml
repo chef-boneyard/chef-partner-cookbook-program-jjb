@@ -10,13 +10,16 @@
          url: https://github.com/DataDog/chef-datadog.git
          wipe-workspace: false
          clean: true
-         branches: master
+         branches: 
+           - master
     builders:
         - shell: |
             #!/bin/bash
             source "$HOME/.rvm/scripts/rvm"
             set -e
             cp /home/jenkins/kitchens/datadog.kitchen.yml .kitchen.azure.yml
+            chef gem install coveralls
+            chef gem install json_spec
             chef exec rubocop .
             chef exec foodcritic .
             chef exec rspec spec
