@@ -1,0 +1,44 @@
+- job:
+    name: datadog-cookbook
+    project-type: freestyle
+    description: 'verify that the datadog-cookbook is in a state to push'
+    properties:
+      - github:
+          url: https://github.com/DataDog/chef-datadog.git
+    scm:
+      - git:
+         url: https://github.com/DataDog/chef-datadog.git
+         wipe-workspace: false
+         clean: true
+    builders:
+        - shell: |
+            #!/bin/bash
+            source "$HOME/.rvm/scripts/rvm"
+            set -e
+            rvm --force gemset delete 2.3.0@datadog-cookbook
+            rvm use 2.3.0@datadog-cookbook --create
+            cp /home/jenkins/kitchens/datadog.kitchen.yml .kitchen.azure.yml
+            gem install bundle
+            bundle install
+            bundle exec rubocop .
+            bundle exec foodcritic .
+            bundle exec rspec spec
+            KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen verify
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+          post-fail:
+            - shell: |
+                #!/bin/bash
+                KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen list
+                KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy
+                rvm --force gemset delete 2.3.0@datadog-cookbook
+    triggers:
+      - timed: "@midnight"
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'
