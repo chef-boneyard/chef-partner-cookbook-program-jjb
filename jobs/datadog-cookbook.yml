@@ -10,6 +10,7 @@
          url: https://github.com/DataDog/chef-datadog.git
          wipe-workspace: false
          clean: true
+         branches: master
     builders:
         - shell: |
             #!/bin/bash
