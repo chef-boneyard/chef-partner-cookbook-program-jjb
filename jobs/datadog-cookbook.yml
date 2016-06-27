@@ -15,14 +15,10 @@
             #!/bin/bash
             source "$HOME/.rvm/scripts/rvm"
             set -e
-            rvm --force gemset delete 2.3.0@datadog-cookbook
-            rvm use 2.3.0@datadog-cookbook --create
             cp /home/jenkins/kitchens/datadog.kitchen.yml .kitchen.azure.yml
-            gem install bundle
-            bundle install
-            bundle exec rubocop .
-            bundle exec foodcritic .
-            bundle exec rspec spec
+            chef exec rubocop .
+            chef exec foodcritic .
+            chef exec rspec spec
             KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen verify
     wrappers:
       - workspace-cleanup
@@ -33,7 +29,6 @@
                 #!/bin/bash
                 KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen list
                 KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy
-                rvm --force gemset delete 2.3.0@datadog-cookbook
     triggers:
       - timed: "@midnight"
     publishers:
