@@ -22,6 +22,7 @@
             bundle exec rubocop .
             bundle exec foodcritic .
             bundle exec rspec spec
+            KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen verify
     wrappers:
       - workspace-cleanup
       - release:
@@ -29,8 +30,8 @@
           post-fail:
             - shell: |
                 #!/bin/bash
-                bundle exec kitchen list
-                bundle exec kitchen destroy
+                KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen list
+                KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy
                 rvm --force gemset delete 2.2.0@al_agents-cookbook
     triggers:
       - timed: "@midnight"
