@@ -17,6 +17,7 @@
             set -e
             rvm --force gemset delete 2.3.0@al_agents-cookbook
             rvm use 2.3.0@al_agents-cookbook --create
+            cp /home/jenkins/kitchens/al-agents.kitchen.yml .kitchen.azure.yml
             gem install bundle
             bundle install
             bundle exec rubocop .
