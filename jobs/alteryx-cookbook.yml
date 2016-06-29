@@ -1,0 +1,39 @@
+- job:
+    name: alteryx-cookbook
+    project-type: freestyle
+    description: 'verify that the alteryx-cookbook is in a state to push'
+    properties:
+      - github:
+          url: https://github.com/alteryx/cookbook-alteryx-server.git
+    scm:
+      - git:
+         url: https://github.com/alteryx/cookbook-alteryx-server.git
+         wipe-workspace: false
+         clean: true
+    builders:
+        - shell: |
+            #!/bin/bash
+            cp /home/jenkins/kitchens/alteryx.kitchen.yml .kitchen.azure.yml
+            chef exec rubocop .
+            chef exec foodcritic .
+            chef exec rspec spec
+            KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen verify
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+    triggers:
+      - timed: "@midnight"
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'
+      - post-tasks:
+        - matches:
+          - log-text: "Class: Kitchen::ActionFailed"
+          script: |
+              #!/bin/bash
+              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen list
+              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy
