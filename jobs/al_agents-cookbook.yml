@@ -38,7 +38,7 @@
           room: '#cookbook-partner-prog'
       - post-tasks:
         - matches:
-          - log-text: "FINISHED: failure"
+          - log-text: "Class: Kitchen::ActionFailed"
           script: |
               #!/bin/bash
               KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen list
