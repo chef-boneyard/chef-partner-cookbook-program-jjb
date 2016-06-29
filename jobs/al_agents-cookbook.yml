@@ -15,7 +15,6 @@
             #!/bin/bash
             source "$HOME/.rvm/scripts/rvm"
             set -e
-            rvm --force gemset delete 2.3.0@al_agents-cookbook
             rvm use 2.3.0@al_agents-cookbook --create
             cp /home/jenkins/kitchens/al-agents.kitchen.yml .kitchen.azure.yml
             gem install bundle
@@ -37,6 +36,11 @@
           build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
           room: '#cookbook-partner-prog'
       - post-tasks:
+        - matches:
+          - log-text: "#gemset created"
+          script: |
+              #!/bin/bash
+              rvm --force gemset delete 2.3.0@al_agents-cookbook
         - matches:
           - log-text: "Class: Kitchen::ActionFailed"
           script: |
