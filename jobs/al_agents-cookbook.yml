@@ -22,7 +22,7 @@
             bundle exec rubocop .
             bundle exec foodcritic .
             bundle exec rspec spec
-            KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen verify
+            KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
     wrappers:
       - workspace-cleanup
       - release:
