@@ -32,10 +32,12 @@ If you would like to update any of the jobs, you need to use the [update jobs][u
 job. Clone down the repo, and if it changes at all it'll update the corresponding
 jobs.
 
-## Cookbooks
+## The Jenkins Job YAMLs for the Cookbooks
 
+- [3scale][3scale]
 - [alertlogic][alertlogic]
 - [alteryx][alteryx]
+- [cloudpassage][cloudpassage]
 - [datadog][datadog]
 - [graylog2][graylog2]
 - [maas][maas]
@@ -45,8 +47,10 @@ jobs.
 [search]: https://supermarket.chef.io/cookbooks?utf8=✓&q=&badges%5B%5D=partner&platforms%5B%5D=
 [jenkins]: https://jenkins-01.eastus.cloudapp.azure.com/
 
+[3scale]: ./jobs/3scale-cookbook.yml
 [alertlogic]: ./jobs/al_agents-cookbook.yml
 [alteryx]: ./jobs/alteryx-cookbook.yml
+[cloudpassage]: ./jobs/cloudpassage-cookbook.yml
 [datadog]: ./jobs/datadog-cookbook.yml
 [graylog2]: ./jobs/graylog2-cookbook.yml
 [maas]: ./jobs/maas-cookbook.yml
