@@ -14,8 +14,7 @@
         - shell: |
             #!/bin/bash
             cp /home/jenkins/kitchens/cloudpassage.kitchen.yml .kitchen.azure.yml
-            rvm gemset create cloudpassage
-            rvm 2.3.0
+            rvm use 2.3.0@cloudpassage --create
             gem install bundle
             bundle install
             bundle exec rake style
