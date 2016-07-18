@@ -23,13 +23,32 @@ $ bundle install
 $ bundle exec rake
 ```
 
+## Our Jenkins set up
+
+We have our Jenkins setup [here][jenkins]. It's public and you're more then
+welcome to take a look at it.
+
+If you would like to update any of the jobs, you need to use the [update jobs][updatejobs]
+job. Clone down the repo, and if it changes at all it'll update the corresponding
+jobs.
+
 ## Cookbooks
 
 - [alertlogic][alertlogic]
+- [alteryx][alteryx]
+- [datadog][datadog]
 - [graylog2][graylog2]
+- [maas][maas]
 
 
-[cpcp]: https://www.chef.io/blog/2016/02/23/chef-launches-partner-cookbook-program-to-expand-devops-ready-technology-ecosystem/
+[cpcp]: https://www.chef.io/partners/cookbooks/
 [search]: https://supermarket.chef.io/cookbooks?utf8=✓&q=&badges%5B%5D=partner&platforms%5B%5D=
+[jenkins]: https://jenkins-01.eastus.cloudapp.azure.com/
+
 [alertlogic]: ./jobs/al_agents-cookbook.yml
+[alteryx]: ./jobs/alteryx-cookbook.yml
+[datadog]: ./jobs/datadog-cookbook.yml
 [graylog2]: ./jobs/graylog2-cookbook.yml
+[maas]: ./jobs/maas-cookbook.yml
+
+[updatejobs]: https://jenkins-01.eastus.cloudapp.azure.com/job/update-jobs/
