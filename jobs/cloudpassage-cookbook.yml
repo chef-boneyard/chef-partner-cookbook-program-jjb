@@ -7,15 +7,18 @@
           url: https://github.com/cloudpassage/cloudpassage-chef-cookbook.git
     scm:
       - git:
-         url: https://github.com/cloudpassage/cloudpassage-chef-cookbook.git
-         wipe-workspace: false
-         clean: true
+          url: https://github.com/cloudpassage/cloudpassage-chef-cookbook.git
+          wipe-workspace: false
+          clean: true
     builders:
         - shell: |
             #!/bin/bash
             cp /home/jenkins/kitchens/cloudpassage.kitchen.yml .kitchen.azure.yml
-            chef exec rake style
-            chef exec rake spec
+            rvm use 2.3.0@cloudpassage --create
+            gem install bundle
+            bundle install
+            bundle exec rake style
+            bundle exec rake spec
             KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
     wrappers:
       - workspace-cleanup
@@ -34,5 +37,6 @@
           - log-text: "Class: Kitchen::ActionFailed"
           script: |
               #!/bin/bash
+              rvm gemset delete 2.3.0@cloudpassage
               KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen list
               KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy
