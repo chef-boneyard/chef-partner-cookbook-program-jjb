@@ -1,0 +1,39 @@
+- job:
+    name: rackspace_monitoring-cookbook
+    project-type: freestyle
+    description: 'verify that the rackspace_monitoring-cookbook is in a state to push'
+    properties:
+      - github:
+          url: https://github.com/rackspace-cookbooks/rackspace_monitoring.git
+    scm:
+      - git:
+         url: https://github.com/rackspace-cookbooks/rackspace_monitoring.git
+         wipe-workspace: false
+         clean: true
+    builders:
+        - shell: |
+            #!/bin/bash
+            cp /home/jenkins/kitchens/rackspace_monitoring.kitchen.yml .kitchen.azure.yml
+            chef exec rubocop .
+            chef exec foodcritic .
+            chef exec rspec spec
+            KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+    triggers:
+      - timed: "@midnight"
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'
+      - post-tasks:
+        - matches:
+          - log-text: "Class: Kitchen::ActionFailed"
+          script: |
+              #!/bin/bash
+              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen list
+              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy

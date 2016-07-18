@@ -43,6 +43,7 @@ jobs.
 - [dynatrace][dynatrace]
 - [graylog2][graylog2]
 - [maas][maas]
+- [rackspace_monitoring][rackspacemonitoring]
 
 
 [cpcp]: https://www.chef.io/partners/cookbooks/
@@ -58,5 +59,6 @@ jobs.
 [dynatrace]: ./jobs/dynatrace-cookbook.yml
 [graylog2]: ./jobs/graylog2-cookbook.yml
 [maas]: ./jobs/maas-cookbook.yml
+[rackspacemonitoring]: ./jobs/rackspace_monitoring-cookbook.yml
 
 [updatejobs]: https://jenkins-01.eastus.cloudapp.azure.com/job/update-jobs/
