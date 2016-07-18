@@ -38,8 +38,9 @@ jobs.
 - [alertlogic][alertlogic]
 - [alteryx][alteryx]
 - [cloudpassage][cloudpassage]
-- [dnsimple][dnsimple]
 - [datadog][datadog]
+- [dnsimple][dnsimple]
+- [dynatrace][dynatrace]
 - [graylog2][graylog2]
 - [maas][maas]
 
@@ -52,8 +53,9 @@ jobs.
 [alertlogic]: ./jobs/al_agents-cookbook.yml
 [alteryx]: ./jobs/alteryx-cookbook.yml
 [cloudpassage]: ./jobs/cloudpassage-cookbook.yml
-[dnsimple]: ./jobs/dnsimple-cookbook.yml
 [datadog]: ./jobs/datadog-cookbook.yml
+[dnsimple]: ./jobs/dnsimple-cookbook.yml
+[dynatrace]: ./jobs/dynatrace-cookbook.yml
 [graylog2]: ./jobs/graylog2-cookbook.yml
 [maas]: ./jobs/maas-cookbook.yml
 
