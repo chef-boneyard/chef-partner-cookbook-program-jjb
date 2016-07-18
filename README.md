@@ -44,6 +44,9 @@ jobs.
 - [graylog2][graylog2]
 - [maas][maas]
 - [rackspace_monitoring][rackspacemonitoring]
+- [sensu][sensu]
+- [sumologic-collector][sumologiccollector]
+- [threatstack][threatstack]
 
 
 [cpcp]: https://www.chef.io/partners/cookbooks/
@@ -60,5 +63,8 @@ jobs.
 [graylog2]: ./jobs/graylog2-cookbook.yml
 [maas]: ./jobs/maas-cookbook.yml
 [rackspacemonitoring]: ./jobs/rackspace_monitoring-cookbook.yml
+[sensu]: ./jobs/sensu-cookbook.yml
+[sumologiccollector]: ./jobs/sumologic-collector-cookbook.yml
+[threatstack]: ./jobs/threatstack-cookbook.yml
 
 [updatejobs]: https://jenkins-01.eastus.cloudapp.azure.com/job/update-jobs/
