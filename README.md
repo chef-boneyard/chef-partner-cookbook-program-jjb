@@ -42,7 +42,9 @@ jobs.
 - [dnsimple][dnsimple]
 - [dynatrace][dynatrace]
 - [graylog2][graylog2]
+- [ilo][ilo]
 - [maas][maas]
+- [oneview][oneview]
 - [rackspace_monitoring][rackspacemonitoring]
 - [sensu][sensu]
 - [sumologic-collector][sumologiccollector]
@@ -61,7 +63,9 @@ jobs.
 [dnsimple]: ./jobs/dnsimple-cookbook.yml
 [dynatrace]: ./jobs/dynatrace-cookbook.yml
 [graylog2]: ./jobs/graylog2-cookbook.yml
+[ilo]: ./jobs/ilo-cookbook.yml
 [maas]: ./jobs/maas-cookbook.yml
+[oneview]: ./jobs/oneview-cookbook.yml
 [rackspacemonitoring]: ./jobs/rackspace_monitoring-cookbook.yml
 [sensu]: ./jobs/sensu-cookbook.yml
 [sumologiccollector]: ./jobs/sumologic-collector-cookbook.yml
