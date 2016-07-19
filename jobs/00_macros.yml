@@ -2,6 +2,7 @@
     name: check-markdown-files-are-there
     builders:
       - shell: |
+          #!/bin/bash
           if [ ! -a CHANGELOG.md ]
             then
             echo "#"
