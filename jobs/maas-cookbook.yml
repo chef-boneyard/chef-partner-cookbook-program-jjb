@@ -14,18 +14,19 @@
          wipe-workspace: false
          clean: true
     builders:
-        - shell: |
-            #!/bin/bash
-            source "$HOME/.rvm/scripts/rvm"
-            set -e
-            rvm --force gemset delete 2.3.0@maas-cookbook
-            rvm use 2.3.0@maas-cookbook --create
-            gem install bundle
-            bundle install
-            bundle exec foodcritic .
-            bundle exec rake spec .
-            bundle exec rubocop .
-            bundle exec kitchen verify
+      - check-markdown-files-are-there
+      - shell: |
+          #!/bin/bash
+          source "$HOME/.rvm/scripts/rvm"
+          set -e
+          rvm --force gemset delete 2.3.0@maas-cookbook
+          rvm use 2.3.0@maas-cookbook --create
+          gem install bundle
+          bundle install
+          bundle exec foodcritic .
+          bundle exec rake spec .
+          bundle exec rubocop .
+          bundle exec kitchen verify
     wrappers:
       - workspace-cleanup
       - release:

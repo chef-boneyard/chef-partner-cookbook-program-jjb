@@ -11,15 +11,16 @@
          wipe-workspace: false
          clean: true
     builders:
-        - shell: |
-            #!/bin/bash
-            source "$HOME/.rvm/scripts/rvm"
-            set -e
-            rvm --force gemset delete 2.3.0@graylog2-cookbook
-            rvm use 2.3.0@graylog2-cookbook --create
-            gem install bundle
-            bundle install
-            bundle exec rake
+      - check-markdown-files-are-there
+      - shell: |
+          #!/bin/bash
+          source "$HOME/.rvm/scripts/rvm"
+          set -e
+          rvm --force gemset delete 2.3.0@graylog2-cookbook
+          rvm use 2.3.0@graylog2-cookbook --create
+          gem install bundle
+          bundle install
+          bundle exec rake
     wrappers:
       - workspace-cleanup
       - release:

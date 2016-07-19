@@ -11,13 +11,14 @@
          wipe-workspace: false
          clean: true
     builders:
-        - shell: |
-            #!/bin/bash
-            cp /home/jenkins/kitchens/sensu.kitchen.yml .kitchen.azure.yml
-            chef exec rspec spec
-            chef exec rubocop .
-            chef exec foodcritic .
-            KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
+      - check-markdown-files-are-there
+      - shell: |
+          #!/bin/bash
+          cp /home/jenkins/kitchens/sensu.kitchen.yml .kitchen.azure.yml
+          chef exec rspec spec
+          chef exec rubocop .
+          chef exec foodcritic .
+          KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
     wrappers:
       - workspace-cleanup
       - release:
