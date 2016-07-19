@@ -1,4 +1,3 @@
-require 'pathname'
 require './bin/secrets.rb'
 task :default => [:secrets, :jjb]
 
