@@ -12,7 +12,7 @@ task :jjb do
   Dir.glob('jobs/temp/*.yml') do |item|
     absolute_path = Pathname.new(File.expand_path(item))
     file_name = absolute_path.basename
-    if file_name == '00_macros.yml'
+    if file_name == 'temp-00_macros.yml'
       puts "skipping #{file_name}"
     else
       sh "jenkins-jobs --conf ../jenkins_jobs.ini update jobs/00_macros.yml:jobs/temp/#{file_name}"
