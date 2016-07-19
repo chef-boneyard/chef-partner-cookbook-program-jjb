@@ -9,14 +9,14 @@ end
 
 desc "run the jjb application"
 task :jjb do
-  Dir.glob('jobs/temp/*.yml') do |item|
+  ignore = ['temp-00_macros.yml']
+  jobs_defs = Dir.glob('jobs/temp/*.yml')
+  jobs_defs -= ignore
+  puts jobs_defs
+  jobs_defs.each do |item|
     absolute_path = Pathname.new(File.expand_path(item))
     file_name = absolute_path.basename
-    if file_name == 'temp-00_macros.yml'
-      puts "skipping #{file_name}"
-    else
-      sh "jenkins-jobs --conf ../jenkins_jobs.ini update jobs/00_macros.yml:jobs/temp/#{file_name}"
-    end
+    sh "jenkins-jobs --conf ../jenkins_jobs.ini update jobs/00_macros.yml:jobs/temp/#{file_name}"
   end
   sh "rm jobs/temp/temp-*"
 end
