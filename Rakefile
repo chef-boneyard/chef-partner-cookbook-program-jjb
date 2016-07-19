@@ -11,7 +11,6 @@ task :jjb do
   ignore = ['temp-00_macros.yml'].map{ |f| "jobs/temp/#{f}" }
   jobs_defs = Dir.glob('jobs/temp/*.yml')
   jobs_defs -= ignore
-  puts jobs_defs
   jobs_defs.each do |item|
     absolute_path = Pathname.new(File.expand_path(item))
     file_name = absolute_path.basename
