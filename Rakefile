@@ -12,7 +12,7 @@ task :jjb do
   Dir.glob('jobs/temp/*.yml') do |item|
     absolute_path = Pathname.new(File.expand_path(item))
     file_name = absolute_path.basename
-    sh "jenkins-jobs --conf ../jenkins_jobs.ini update macros/00_macros.yml:jobs/temp/#{file_name}"
+    sh "jenkins-jobs --conf ../jenkins_jobs.ini update jobs/00_macros.yml:jobs/temp/#{file_name}"
   end
   sh "rm jobs/temp/temp-*"
 end
