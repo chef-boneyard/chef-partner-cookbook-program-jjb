@@ -12,7 +12,6 @@
             echo "#"
             echo "#"
             echo "#"
-            exit 0
           fi
 
           if [ ! -a README.md ]
@@ -24,7 +23,6 @@
             echo "#"
             echo "#"
             echo "#"
-            exit 0
           fi
 
           if [ ! -a TESTING.md ]
@@ -36,5 +34,4 @@
             echo "#"
             echo "#"
             echo "#"
-            exit 0
           fi
