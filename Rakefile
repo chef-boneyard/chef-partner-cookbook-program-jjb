@@ -8,7 +8,7 @@ end
 
 desc "run the jjb application"
 task :jjb do
-  ignore = ['temp-00_macros.yml']
+  ignore = ['jobs/temp/temp-00_macros.yml']
   jobs_defs = Dir.glob('jobs/temp/*.yml')
   jobs_defs -= ignore
   puts jobs_defs
