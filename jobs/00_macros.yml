@@ -3,7 +3,7 @@
     builders:
       - shell: |
           #!/bin/bash
-          if [ ! -a CHANGELOG.md ]
+          if [ ! -f CHANGELOG.md ]
             then
             echo "#"
             echo "#"
@@ -14,7 +14,7 @@
             echo "#"
           fi
 
-          if [ ! -a README.md ]
+          if [ ! -f README.md ]
             then
             echo "#"
             echo "#"
@@ -25,10 +25,10 @@
             echo "#"
           fi
 
-          if [ ! -a TESTING.md ]
+          if [ ! -f TESTING.md ]
             then
             echo "#"
-            cho "#"
+            echo "#"
             echo "#"
             echo "# NO TESTING.md "
             echo "#"
