@@ -34,21 +34,21 @@ jobs.
 
 ## The Jenkins Job YAMLs for the Cookbooks
 
-- [3scale][3scale][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/3scale-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/3scale-cookbook/)
-- [alertlogic][alertlogic][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/al_agents-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/al_agents-cookbook/)
-- [alteryx][alteryx][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/alteryx-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/alteryx-cookbook/)
-- [cloudpassage][cloudpassage][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/cloudpassage-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/cloudpassage-cookbook/)
-- [datadog][datadog][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/datadog-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/datadog-cookbook/)
-- [dnsimple][dnsimple][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/dnsimple-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/dnsimple-cookbook/)
-- [dynatrace][dynatrace][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/dynatrace-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/dynatrace-cookbook/)
-- [graylog2][graylog2][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/graylog2-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/graylog2-cookbook/)
-- [ilo][ilo][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/ilo-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/ilo-cookbook/)
-- [maas][maas][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/maas-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/maas-cookbook/)
-- [oneview][oneview][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/oneview-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/oneview-cookbook/)
-- [rackspace_monitoring][rackspacemonitoring][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/rackspace_monitoring-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/rackspace_monitoring-cookbook/)
-- [sensu][sensu][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/sensu-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/sensu-cookbook/)
-- [sumologic-collector][sumologiccollector][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/sumologic-collector-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/sumologic-collector-cookbook/)
-- [threatstack][threatstack][![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/threatstack-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/threatstack-cookbook/)
+|[3scale][3scale] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/3scale-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/3scale-cookbook/) |
+| [alertlogic][alertlogic] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/al_agents-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/al_agents-cookbook/) |
+| [alteryx][alteryx] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/alteryx-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/alteryx-cookbook/) |
+| [cloudpassage][cloudpassage] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/cloudpassage-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/cloudpassage-cookbook/) |
+| [datadog][datadog] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/datadog-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/datadog-cookbook/) |n
+| [dnsimple][dnsimple] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/dnsimple-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/dnsimple-cookbook/) |
+| [dynatrace][dynatrace] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/dynatrace-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/dynatrace-cookbook/) |
+| [graylog2][graylog2] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/graylog2-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/graylog2-cookbook/) |
+| [ilo][ilo] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/ilo-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/ilo-cookbook/) |
+| [maas][maas] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/maas-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/maas-cookbook/) |
+| [oneview][oneview] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/oneview-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/oneview-cookbook/) |
+| [rackspace_monitoring][rackspacemonitoring] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/rackspace_monitoring-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/rackspace_monitoring-cookbook/) |n
+| [sensu][sensu] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/sensu-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/sensu-cookbook/) |
+| [sumologic-collector][sumologiccollector] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/sumologic-collector-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/sumologic-collector-cookbook/) |
+| [threatstack][threatstack] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/threatstack-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/threatstack-cookbook/) |
 
 
 [cpcp]: https://www.chef.io/partners/cookbooks/
