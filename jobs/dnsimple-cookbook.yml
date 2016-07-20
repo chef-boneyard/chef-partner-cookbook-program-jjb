@@ -10,6 +10,9 @@
          url: https://github.com/dnsimple/chef-dnsimple.git
          wipe-workspace: false
          clean: true
+         branches:
+           - test
+
     builders:
       - check-markdown-files-are-there
       - shell: |
