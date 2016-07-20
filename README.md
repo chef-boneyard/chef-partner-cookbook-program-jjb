@@ -33,8 +33,9 @@ job. Clone down the repo, and if it changes at all it'll update the correspondin
 jobs.
 
 ## The Jenkins Job YAMLs for the Cookbooks
-
-|[3scale][3scale] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/3scale-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/3scale-cookbook/) |
+| Cookbook  | Build Status |
+| ------------- | ------------- |
+| [3scale][3scale] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/3scale-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/3scale-cookbook/) |
 | [alertlogic][alertlogic] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/al_agents-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/al_agents-cookbook/) |
 | [alteryx][alteryx] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/alteryx-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/alteryx-cookbook/) |
 | [cloudpassage][cloudpassage] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/cloudpassage-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/cloudpassage-cookbook/) |
