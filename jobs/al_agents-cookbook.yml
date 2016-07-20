@@ -14,16 +14,9 @@
       - check-markdown-files-are-there
       - shell: |
           #!/bin/bash
-          source "$HOME/.rvm/scripts/rvm"
-          set -e
-          rvm use 2.3.0@al_agents-cookbook --create
-          cp /home/jenkins/kitchens/al-agents.kitchen.yml .kitchen.azure.yml
-          gem install bundle
-          bundle install
-          bundle exec rubocop .
-          bundle exec foodcritic .
-          bundle exec rspec spec
-          KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
+          chef exec rubocop .
+          chef exec foodcritic .
+          chef exec rspec spec
     wrappers:
       - workspace-cleanup
       - release:

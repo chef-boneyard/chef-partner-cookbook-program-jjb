@@ -14,10 +14,8 @@
       - check-markdown-files-are-there
       - shell: |
           #!/bin/bash
-          cp /home/jenkins/kitchens/cloudpassage.kitchen.yml .kitchen.azure.yml
           chef exec rake style
-          bundle exec rake spec
-          KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
+          chef exec rake spec
     wrappers:
       - workspace-cleanup
       - release:

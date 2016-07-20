@@ -14,11 +14,9 @@
       - check-markdown-files-are-there
       - shell: |
           #!/bin/bash
-          cp /home/jenkins/kitchens/dynatrace.kitchen.yml .kitchen.azure.yml
           chef exec rubocop .
           chef exec foodcritic .
           chef exec rspec spec
-          KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
     wrappers:
       - workspace-cleanup
       - release:
