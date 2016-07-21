@@ -44,7 +44,7 @@
           chef exec rubocop .
 
 - builder:
-    name: chef-exec-foodcritc
+    name: chef-exec-foodcritic
     builders:
       - shell: |
           #!/bin/bash
