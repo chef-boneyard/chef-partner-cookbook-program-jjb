@@ -11,12 +11,13 @@
          wipe-workspace: false
          clean: true
     builders:
-      #!/bin/bash
-      cp /home/jenkins/secrets.yml .
-      cp /home/jenkins/jenkins_jobs.ini ../
-      mkdir jobs/temp
-      bundle exec rake secrets
-      bundle exec rake jjb
+      - shell:
+        #!/bin/bash
+        cp /home/jenkins/secrets.yml .
+        cp /home/jenkins/jenkins_jobs.ini ../
+        mkdir jobs/temp
+        bundle exec rake secrets
+        bundle exec rake jjb
     wrappers:
       - workspace-cleanup
       - release:
