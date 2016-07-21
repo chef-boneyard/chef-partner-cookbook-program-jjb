@@ -1,0 +1,32 @@
+- job:
+    name: update-jobs
+    project-type: freestyle
+    description: 'automagicly update our jobs!'
+    properties:
+      - github:
+          url: https://github.com/chef-partners/chef-partner-cookbook-program-jjb.git
+    scm:
+      - git:
+         url: https://github.com/chef-partners/chef-partner-cookbook-program-jjb.git
+         wipe-workspace: false
+         clean: true
+    builders:
+      #!/bin/bash
+      cp /home/jenkins/secrets.yml .
+      cp /home/jenkins/jenkins_jobs.ini ../
+      mkdir jobs/temp
+      bundle exec rake secrets
+      bundle exec rake jjb
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+      - ansicolor
+    triggers:
+      - github
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'

@@ -1,0 +1,29 @@
+- job:
+    name: cookbook-guide-container
+    project-type: freestyle
+    description: 'automagicly update our cookbook-guide container!'
+    properties:
+      - github:
+          url: https://github.com/chef-partners/cookbook-guide.git/
+    scm:
+      - git:
+         url: https://github.com/chef-partners/cookbook-guide.git/
+         wipe-workspace: false
+         clean: true
+    builders:
+      #!/bin/bash
+      docker build  --no-cache -t="jjasghar/chef-partner-cookbook-guide" .
+      docker push jjasghar/chef-partner-cookbook-guide
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+      - ansicolor
+    triggers:
+      - github
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'
