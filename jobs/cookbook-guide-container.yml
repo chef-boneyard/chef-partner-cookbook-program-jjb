@@ -11,7 +11,7 @@
          wipe-workspace: false
          clean: true
     builders:
-      - shell:
+      - shell: |
           #!/bin/bash
           docker build  --no-cache -t="jjasghar/chef-partner-cookbook-guide" .
           docker push jjasghar/chef-partner-cookbook-guide
