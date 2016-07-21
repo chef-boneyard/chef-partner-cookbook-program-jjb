@@ -15,7 +15,7 @@
     builders:
       - check-markdown-files-are-there
       - chef-exec-rubocop
-      - chef-exec-foodcritc
+      - chef-exec-foodcritic
       - chef-exec-rspec-spec
       - shell: |
           #!/bin/bash
