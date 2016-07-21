@@ -56,3 +56,10 @@
       - shell: |
           #!/bin/bash
           chef exec rspec spec
+
+- builder:
+    name: chef-exec-rake-spec
+    builders:
+      - shell: |
+          #!/bin/bash
+          chef exec rake spec
