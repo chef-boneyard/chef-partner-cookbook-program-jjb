@@ -16,8 +16,6 @@
       - check-markdown-files-are-there
       - shell: |
           #!/bin/bash
-          source "$HOME/.rvm/scripts/rvm"
-          set -e
           cp /home/jenkins/kitchens/datadog.kitchen.yml .kitchen.azure.yml
           chef gem install coveralls
           chef gem install json_spec
@@ -34,6 +32,7 @@
                 #!/bin/bash
                 KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen list
                 KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy
+      - ansicolor
     triggers:
       - timed: "@midnight"
     publishers:

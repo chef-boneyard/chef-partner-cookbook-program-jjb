@@ -35,3 +35,24 @@
             echo "#"
             echo "#"
           fi
+
+- builder:
+    name: chef-exec-rubocop
+    builders:
+      - shell: |
+          #!/bin/bash
+          chef exec rubocop .
+
+- builder:
+    name: chef-exec-foodcritc
+    builders:
+      - shell: |
+          #!/bin/bash
+          chef exec foodcritic .
+
+- builder:
+    name: chef-exec-rspec-spec
+    builders:
+      - shell: |
+          #!/bin/bash
+          chef exec rspec spec

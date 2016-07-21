@@ -12,17 +12,11 @@
          clean: true
     builders:
         - check-markdown-files-are-there
+        - chef-exec-rubocop
+        - chef-exec-foodcritc
+        - chef-exec-rspec-spec
         - shell: |
             #!/bin/bash
-            chef exec rubocop .
-        - shell: |
-            #!/bin/bash
-            chef exec foodcritic .
-        - shell: |
-            #!/bin/bash
-            chef exec rspec spec
-        - shell: |
-            #!/bin/bash                        
             cp /home/jenkins/kitchens/3scale.kitchen.yml .kitchen.azure.yml
             KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
     wrappers:

@@ -15,16 +15,17 @@
            - master
     builders:
       - check-markdown-files-are-there
+      - chef-exec-foodcritic
+      - chef-exec-rspec-spec
       - shell: |
           #!/bin/bash
           cp /home/jenkins/kitchens/sensu.kitchen.yml .kitchen.azure.yml
-          chef exec rspec spec
-          chef exec foodcritic .
           KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
     wrappers:
       - workspace-cleanup
       - release:
           keep-forever: false
+      - ansicolor
     triggers:
       - timed: "@midnight"
     publishers:

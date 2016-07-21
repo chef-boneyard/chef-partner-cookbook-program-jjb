@@ -12,14 +12,15 @@
          clean: true
     builders:
       - check-markdown-files-are-there
+      - chef-exec-rake-spec
       - shell: |
           cp /home/jenkins/kitchens/graylog2.kitchen.yml .kitchen.azure.yml
-          chef exec rake spec
           KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
     wrappers:
       - workspace-cleanup
       - release:
           keep-forever: false
+      - ansicolor
     triggers:
       - timed: "@midnight"
     publishers:

@@ -12,15 +12,14 @@
          clean: true
     builders:
       - check-markdown-files-are-there
-      - shell: |
-          #!/bin/bash
-          chef exec rubocop .
-          chef exec foodcritic .
-          chef exec rspec spec
+      - chef-exec-rubocop
+      - chef-exec-foodcritc
+      - chef-exec-rspec-spec
     wrappers:
       - workspace-cleanup
       - release:
           keep-forever: false
+      - ansicolor
     triggers:
       - timed: "@midnight"
     publishers:
