@@ -38,6 +38,7 @@ jobs.
 | [3scale][3scale] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/3scale-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/3scale-cookbook/) |
 | [alertlogic][alertlogic] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/al_agents-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/al_agents-cookbook/) |
 | [alteryx][alteryx] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/alteryx-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/alteryx-cookbook/) |
+| [caskdata][caskdata] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/cdap-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/cdap-cookbook/) |
 | [cloudpassage][cloudpassage] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/cloudpassage-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/cloudpassage-cookbook/) |
 | [datadog][datadog] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/datadog-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/datadog-cookbook/) |n
 | [dnsimple][dnsimple] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/dnsimple-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/dnsimple-cookbook/) |
@@ -59,6 +60,7 @@ jobs.
 [3scale]: ./jobs/3scale-cookbook.yml
 [alertlogic]: ./jobs/al_agents-cookbook.yml
 [alteryx]: ./jobs/alteryx-cookbook.yml
+[caskdata]: ./jobs/cdap-cookbook.yml
 [cloudpassage]: ./jobs/cloudpassage-cookbook.yml
 [datadog]: ./jobs/datadog-cookbook.yml
 [dnsimple]: ./jobs/dnsimple-cookbook.yml
