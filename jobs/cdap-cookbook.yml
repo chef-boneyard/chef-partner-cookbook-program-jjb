@@ -16,12 +16,7 @@
       - check-markdown-files-are-there
       - shell: |
           #!/bin/bash
-          rvm use 2.3.0@caskdata --create
-          gem install bundle
-          bundle
           bundle exec rake
-          rvm use global
-          rvm delete -f 2.3.0@caskdata
     wrappers:
       - workspace-cleanup
       - release:
