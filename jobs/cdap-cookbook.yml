@@ -14,11 +14,7 @@
            - master
     builders:
       - check-markdown-files-are-there
-      - shell: |
-          #!/bin/bash
-          chef exec rake
-          cp /home/jenkins/kitchens/cdap.kitchen.yml .kitchen.azure.yml
-          KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
+      - chef-exec-rake
     wrappers:
       - workspace-cleanup
       - release:
@@ -32,9 +28,3 @@
           auth-token: 'SLACK-AUTH-TOKEN'
           build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
           room: '#cookbook-partner-prog'
-      - post-tasks:
-        - matches:
-          - log-text: "Class: Kitchen::ActionFailed"
-          script: |
-              #!/bin/bash
-              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy all

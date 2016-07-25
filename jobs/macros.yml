@@ -37,6 +37,13 @@
           fi
 
 - builder:
+    name: chef-exec-rake
+    builders:
+      - shell: |
+          #!/bin/bash
+          chef exec rake
+
+- builder:
     name: chef-exec-rubocop
     builders:
       - shell: |
