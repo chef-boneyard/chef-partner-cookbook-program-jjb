@@ -28,10 +28,3 @@
           auth-token: 'SLACK-AUTH-TOKEN'
           build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
           room: '#cookbook-partner-prog'
-      - post-tasks:
-        - matches:
-          - log-text: "Class: Kitchen::ActionFailed"
-          script: |
-              #!/bin/bash
-              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen list
-              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy

@@ -35,5 +35,4 @@
           - log-text: "Class: Kitchen::ActionFailed"
           script: |
               #!/bin/bash
-              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen list
-              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy
+              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy all
