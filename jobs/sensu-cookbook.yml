@@ -15,7 +15,10 @@
            - master
     builders:
       - check-markdown-files-are-there
-      - chef-exec-rake-spec
+      - shell: |
+          #!/bin/bash
+          bundle
+          bundle exec rake spec
       - shell: |
           #!/bin/bash
           cp /home/jenkins/kitchens/sensu.kitchen.yml .kitchen.azure.yml
