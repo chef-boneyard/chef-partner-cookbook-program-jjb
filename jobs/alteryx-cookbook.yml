@@ -12,9 +12,12 @@
          clean: true
     builders:
       - check-markdown-files-are-there
-      - chef-exec-rubocop
-      - chef-exec-foodcritic
-      - chef-exec-rspec-spec
+      - shell: |
+          #!/bin/bash
+          chef exec rspec .
+      - shell: |
+          cp /home/jenkins/kitchens/alteryx.kitchen.yml .kitchen.azure.yml
+          KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
     wrappers:
       - workspace-cleanup
       - release:
