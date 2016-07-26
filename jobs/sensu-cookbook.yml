@@ -15,8 +15,7 @@
            - master
     builders:
       - check-markdown-files-are-there
-      - chef-exec-foodcritic
-      - chef-exec-rspec-spec
+      - chef-exec-rake-spec
       - shell: |
           #!/bin/bash
           cp /home/jenkins/kitchens/sensu.kitchen.yml .kitchen.azure.yml
