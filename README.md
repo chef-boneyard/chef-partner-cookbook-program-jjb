@@ -44,6 +44,7 @@ jobs.
 | [dnsimple][dnsimple] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/dnsimple-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/dnsimple-cookbook/) |
 | [dynatrace][dynatrace] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/dynatrace-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/dynatrace-cookbook/) |
 | [graylog2][graylog2] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/graylog2-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/graylog2-cookbook/) |
+| [icinga2][icinga2] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/icinga2-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/icinga2-cookbook/) |
 | [ilo][ilo] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/ilo-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/ilo-cookbook/) |
 | [maas][maas] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/maas-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/maas-cookbook/) |
 | [oneview][oneview] | [![Build Status](https://jenkins-01.eastus.cloudapp.azure.com/job/oneview-cookbook/badge/icon)](https://jenkins-01.eastus.cloudapp.azure.com/job/oneview-cookbook/) |
@@ -66,6 +67,7 @@ jobs.
 [dnsimple]: ./jobs/dnsimple-cookbook.yml
 [dynatrace]: ./jobs/dynatrace-cookbook.yml
 [graylog2]: ./jobs/graylog2-cookbook.yml
+[icinga2]: ./jobs/icinga2-cookbook.yml
 [ilo]: ./jobs/ilo-cookbook.yml
 [maas]: ./jobs/maas-cookbook.yml
 [oneview]: ./jobs/oneview-cookbook.yml
