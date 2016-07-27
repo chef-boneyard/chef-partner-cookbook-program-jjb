@@ -1,0 +1,39 @@
+- job:
+    name: icinga2-cookbook
+    project-type: freestyle
+    description: 'verify that the icinga2-cookbook is in a state to push'
+    properties:
+      - github:
+          url: https://github.com/Icinga/chef-icinga2.git
+    scm:
+      - git:
+         url: https://github.com/Icinga/chef-icinga2.git
+         wipe-workspace: false
+         clean: true
+    builders:
+      - check-markdown-files-are-there
+      - shell: |
+          #!/bin/bash
+          bundle
+          bundle exec rake rubocop .
+      - shell: |
+          #!/bin/bash
+          bundle
+          bundle exec rake foodcritic .
+      - shell: |
+          #!/bin/bash
+          bundle
+          bundle exec rake spec .
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+      - ansicolor
+    triggers:
+      - timed: "@midnight"
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'
