@@ -23,15 +23,19 @@
           ruby --version
 
           gem install bundler -N
+          gem install rake -N
           bundle
       - shell: |
           #!/bin/bash
+          eval "$(direnv export bash)"
           bundle exec rake rubocop .
       - shell: |
           #!/bin/bash
+          eval "$(direnv export bash)"
           bundle exec rake foodcritic .
       - shell: |
           #!/bin/bash
+          eval "$(direnv export bash)"
           bundle exec rake spec .
     wrappers:
       - workspace-cleanup
