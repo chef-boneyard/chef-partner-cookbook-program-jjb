@@ -16,18 +16,22 @@
           #!/bin/bash
           echo "2.3.1" > .ruby-version
           echo "use_ruby" > .envrc
-          direnv allow
+          direnv allow .
+          eval "$(direnv export bash)"
+
+          echo "debug: $GEM_HOME"
+          ruby --version
+
+          gem install bundler -N
+          bundle
       - shell: |
           #!/bin/bash
-          bundle
           bundle exec rake rubocop .
       - shell: |
           #!/bin/bash
-          bundle
           bundle exec rake foodcritic .
       - shell: |
           #!/bin/bash
-          bundle
           bundle exec rake spec .
     wrappers:
       - workspace-cleanup
