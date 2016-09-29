@@ -14,6 +14,35 @@
            - master
     builders:
       - check-markdown-files-are-there
+      - shell: |
+          #!/bin/bash
+          echo "2.3.1" > .ruby-version
+          echo "use_ruby" > .envrc
+          direnv allow .
+          eval "$(direnv export bash)"
+
+          ruby --version
+
+          gem install bundler -N
+          gem install rake -N
+          bundle
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
+          bundle exec rake style
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
+          bundle exec rake spec                            
+      - shell: |
+          #!/bin/bash
+          cp /home/jenkins/kitchens/elasticsearch.kitchen.yml .kitchen.azure.yml
+          eval "$(direnv export bash)"
+          KITCHEN_YAML=".kitchen.azure.yml" bundle exec rake integration
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
+          KITCHEN_YAML=".kitchen.azure.yml" bundle exec rake destroy
     wrappers:
       - workspace-cleanup
       - release:
