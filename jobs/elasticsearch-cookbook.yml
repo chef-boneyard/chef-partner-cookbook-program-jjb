@@ -1,0 +1,34 @@
+- job:
+    name: elasticsearch-cookbook
+    project-type: freestyle
+    description: 'verify that the elasticsearch-cookbook is in a state to push'
+    properties:
+      - github:
+          url: https://github.com/elastic/cookbook-elasticsearch.git
+    scm:
+      - git:
+         url: https://github.com/elastic/cookbook-elasticsearch.git
+         wipe-workspace: false
+         clean: true
+         branches:
+           - master
+    builders:
+      - check-markdown-files-are-there
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+    triggers:
+      - timed: "@midnight"
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'
+      - post-tasks:
+        - matches:
+          - log-text: "Class: Kitchen::ActionFailed"
+          script: |
+              #!/bin/bash
+              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy all
