@@ -10,6 +10,8 @@
          url: https://github.com/Graylog2/graylog2-cookbook.git
          wipe-workspace: false
          clean: true
+         branches:
+           - master
     builders:
       - check-markdown-files-are-there
       - chef-exec-rake-spec
