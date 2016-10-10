@@ -13,6 +13,8 @@
          url: https://github.com/chef-partners/maas.git
          wipe-workspace: false
          clean: true
+         branches:
+           - master
     builders:
       - check-markdown-files-are-there
       - shell: |

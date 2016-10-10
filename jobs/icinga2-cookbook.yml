@@ -10,6 +10,8 @@
          url: https://github.com/Icinga/chef-icinga2.git
          wipe-workspace: false
          clean: true
+         branches:
+           - master
     builders:
       - check-markdown-files-are-there
       - shell: |

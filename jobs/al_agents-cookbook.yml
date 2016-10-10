@@ -10,6 +10,8 @@
          url: https://github.com/alertlogic/al_agents.git
          wipe-workspace: false
          clean: true
+         branches:
+           - master
     builders:
       - check-markdown-files-are-there
       - chef-exec-rubocop
