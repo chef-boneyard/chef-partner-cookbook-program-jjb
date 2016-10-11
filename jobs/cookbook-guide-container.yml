@@ -10,6 +10,8 @@
          url: https://github.com/chef-partners/cookbook-guide.git/
          wipe-workspace: false
          clean: true
+         branches:
+           - master
     builders:
       - shell: |
           #!/bin/bash
