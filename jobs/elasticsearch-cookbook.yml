@@ -33,7 +33,7 @@
       - shell: |
           #!/bin/bash
           eval "$(direnv export bash)"
-          bundle exec rake spec                            
+          bundle exec rake spec
       - shell: |
           #!/bin/bash
           cp /home/jenkins/kitchens/elasticsearch.kitchen.yml .kitchen.azure.yml
