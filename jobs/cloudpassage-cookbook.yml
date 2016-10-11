@@ -16,8 +16,24 @@
       - check-markdown-files-are-there
       - shell: |
           #!/bin/bash
-          chef exec rake style
-          chef exec rake spec
+          echo "2.3.1" > .ruby-version
+          echo "use_ruby" > .envrc
+          direnv allow .
+          eval "$(direnv export bash)"
+
+          ruby --version
+
+          gem install bundler -N
+          gem install rake -N
+          bundle
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
+          bundle exec rake style
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
+          bundle exec rake spec
     wrappers:
       - workspace-cleanup
       - release:
