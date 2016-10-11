@@ -37,12 +37,10 @@
       - shell: |
           #!/bin/bash
           cp /home/jenkins/kitchens/elasticsearch.kitchen.yml .kitchen.azure.yml
-          eval "$(direnv export bash)"
-          KITCHEN_YAML=".kitchen.azure.yml" bundle exec rake integration
+          KITCHEN_YAML=".kitchen.azure.yml" chef exec rake integration
       - shell: |
           #!/bin/bash
-          eval "$(direnv export bash)"
-          KITCHEN_YAML=".kitchen.azure.yml" bundle exec rake destroy
+          KITCHEN_YAML=".kitchen.azure.yml" chef exec rake destroy
     wrappers:
       - workspace-cleanup
       - release:
