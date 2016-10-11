@@ -23,6 +23,8 @@
 
           ruby --version
 
+          rm Gemfile.lock
+
           gem install bundler -N
           gem install rake -N
           bundle
