@@ -45,6 +45,7 @@
       - workspace-cleanup
       - release:
           keep-forever: false
+      - ansicolor
     triggers:
       - timed: "@midnight"
     publishers:
