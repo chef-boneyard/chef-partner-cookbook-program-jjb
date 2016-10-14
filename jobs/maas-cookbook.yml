@@ -5,9 +5,6 @@
     properties:
       - github:
           url: https://github.com/chef-partners/maas.git
-      - slack:
-          notify-failure: True
-          room: '#cookbook-partner-prog'
     scm:
       - git:
          url: https://github.com/chef-partners/maas.git
