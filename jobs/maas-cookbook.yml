@@ -29,11 +29,7 @@
       - shell: |
           #!/bin/bash
           eval "$(direnv export bash)"
-          bundle exec rake foodcritic .
-      - shell: |
-          #!/bin/bash
-          eval "$(direnv export bash)"
-          bundle exec rake spec .
+          bundle exec rake spec
       - shell: |
           #!/bin/bash
           eval "$(direnv export bash)"
