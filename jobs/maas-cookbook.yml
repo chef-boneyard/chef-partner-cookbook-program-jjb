@@ -19,31 +19,31 @@
       - check-markdown-files-are-there
       - shell: |
           #!/bin/bash
-          source "$HOME/.rvm/scripts/rvm"
-          set -e
-          rvm --force gemset delete 2.3.0@maas-cookbook
-          rvm use 2.3.0@maas-cookbook --create
-          gem install bundle
-          bundle install
-          bundle exec foodcritic .
+          echo "2.3.1" > .ruby-version
+          echo "use_ruby" > .envrc
+          direnv allow .
+          eval "$(direnv export bash)"
+
+          ruby --version
+
+          gem install bundler -N
+          gem install rake -N
+          bundle
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
+          bundle exec rake foodcritic .
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
           bundle exec rake spec .
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
           bundle exec rubocop .
-          bundle exec kitchen verify
     wrappers:
       - workspace-cleanup
       - release:
           keep-forever: false
-          post-fail:
-            - shell: |
-                #!/bin/bash
-                bundle exec kitchen list
-                bundle exec kitchen destroy
-                rvm --force gemset delete 2.2.0@maas-cookbook
     triggers:
       - timed: "@midnight"
-    publishers:
-      - slack:
-          team-domain: 'chefio'
-          auth-token: 'SLACK-AUTH-TOKEN'
-          build-server-url: 'SLACK-BUILD-SERVER-URL'
-          room: '#cookbook-partner-prog'
