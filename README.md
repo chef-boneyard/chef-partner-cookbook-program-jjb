@@ -32,6 +32,8 @@ If you would like to update any of the jobs, you need to use the [update jobs][u
 job. Clone down the repo, and if it changes at all it'll update the corresponding
 jobs.
 
+We have added a new test that is being rolled out and that is a measure of the health of the cookbook project.  This measures the age of Issues and PRs.  If any have not been updated for 8 days then this will automatically fail the build.  The URL for each of the violations will be displayed in the console output.
+
 ## The Jenkins Job YAMLs for the Cookbooks
 | Cookbook  | Build Status |
 | ------------- | ------------- |
