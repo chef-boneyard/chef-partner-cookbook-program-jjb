@@ -1,0 +1,51 @@
+- job:
+    name: omnibus_gitlab-cookbook
+    project-type: freestyle
+    description: 'verify that the omnibus_gitlab-cookbook is in a state to push'
+    properties:
+      - github:
+          url: https://gitlab.com/gitlab-org/cookbook-omnibus-gitlab.git
+    scm:
+      - git:
+         url: https://gitlab.com/gitlab-org/cookbook-omnibus-gitlab.git
+         wipe-workspace: false
+         clean: true
+         branches:
+           - master
+    builders:
+      - check-markdown-files-are-there
+      - shell: |
+          #!/bin/bash
+          echo "2.3.1" > .ruby-version
+          echo "use_ruby" > .envrc
+          direnv allow .
+          eval "$(direnv export bash)"
+
+          ruby --version
+
+          gem install bundler -N
+          gem install rake -N
+          bundle
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
+          bundle exec rake style
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+      - ansicolor
+    triggers:
+      - timed: "@midnight"
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'
+      - post-tasks:
+        - matches:
+          - log-text: "Class: Kitchen::ActionFailed"
+          script: |
+              #!/bin/bash
+              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy all
