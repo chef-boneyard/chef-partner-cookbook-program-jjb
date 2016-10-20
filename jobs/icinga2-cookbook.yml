@@ -14,19 +14,7 @@
            - master
     builders:
       - check-markdown-files-are-there
-      - shell: |
-          #!/bin/bash
-          echo "2.3.1" > .ruby-version
-          echo "use_ruby" > .envrc
-          direnv allow .
-          eval "$(direnv export bash)"
-
-          echo "debug: $GEM_HOME"
-          ruby --version
-
-          gem install bundler -N
-          gem install rake -N
-          bundle
+      - envrc-setup
       - shell: |
           #!/bin/bash
           eval "$(direnv export bash)"

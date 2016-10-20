@@ -14,9 +14,9 @@
            - master
     builders:
       - check-markdown-files-are-there
+      - envrc-setup
       - shell: |
           #!/bin/bash
-          bundle
           bundle exec rake spec
       - shell: |
           #!/bin/bash

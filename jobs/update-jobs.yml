@@ -11,6 +11,7 @@
          wipe-workspace: false
          clean: true
     builders:
+      - envrc-setup
       - shell: |
           #!/bin/bash
           cp /home/jenkins/secrets.yml .
