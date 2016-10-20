@@ -1,5 +1,5 @@
 - job:
-    name: arista-eos-cookbook
+    name: chef-eos
     project-type: freestyle
     description: 'verify that the chef-eos is in a state to push'
     properties:
