@@ -1,0 +1,32 @@
+- job:
+    name: chef-eos
+    project-type: freestyle
+    description: 'verify that the chef-eos is in a state to push'
+    properties:
+      - github:
+          url: https://github.com/aristanetworks/chef-eos.git
+    scm:
+      - git:
+         url: https://github.com/aristanetworks/chef-eos.git
+         wipe-workspace: false
+         clean: true
+         branches:
+           - master
+    builders:
+      - check-markdown-files-are-there
+      - shell: |
+          #!/bin/bash
+          chef exec rake style
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+      - ansicolor
+    triggers:
+      - timed: "@midnight"
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'
