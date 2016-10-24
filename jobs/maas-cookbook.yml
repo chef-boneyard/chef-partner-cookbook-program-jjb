@@ -23,6 +23,9 @@
           #!/bin/bash
           eval "$(direnv export bash)"
           bundle exec rubocop .
+      - shell: |
+          #!/bin/bash
+          ruby /mnt/jenkins/workspace/update-jobs/bin/repohealth.rb -o chef-partners -r maas
     wrappers:
       - workspace-cleanup
       - release:
