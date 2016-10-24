@@ -17,9 +17,6 @@
       - shell: |
           #!/bin/bash
           chef exec rspec .
-      - shell: |
-          cp /home/jenkins/kitchens/alteryx.kitchen.yml .kitchen.azure.yml
-          KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
     wrappers:
       - workspace-cleanup
       - release:
