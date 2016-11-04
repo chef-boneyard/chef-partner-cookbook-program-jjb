@@ -6,6 +6,7 @@ require "yaml"
 # Configure the command line options
 options = {}
 options[:age] = 8
+options[:warn] = true
 
 opt_parser = OptionParser.new do |opts|
   opts.banner = "Usage: repoheartbeat.rb [options]"
@@ -27,6 +28,11 @@ opt_parser = OptionParser.new do |opts|
 
   opts.on("-t", "--token TOKEN", "oAuth Token") do |t|
     options[:token] = t
+  end
+
+  # Set whether errors are set as warnings rather than stopping errors
+  opts.on("-e", "--error", "Fail the build on error.  Default is to warn") do |w|
+    options[:warn] = false
   end
 
 end
@@ -111,22 +117,39 @@ items.each do |item|
   end
 end
 
-# Determine what the violations are
+# Set default exitcode
 exitcode = 0
+
+# Based on the warn state, set the prefix for the message
+# This is only for issues and PRs that have not been updated in the last x days
+# Other errors such as not being able to find the configuration file for Github will still generate an error
+if (options[:warn] and (violations[:pr][:count] > 0 or violations[:issues][:count] > 0))
+  prefix = "WARNING"
+  puts <<-EOH
+***************************
+Violations in timely updates to Issues and PRs are being set as warnings and will not fail the build.
+This will change in the future as per the Chef Partner Cookbook Program guidelines.
+***************************
+EOH
+else 
+  prefix = "ERROR"
+end
+
+# Determine what the violations are
 if violations[:pr][:count] > 0
-  puts format("ERROR: %s Pull requests have not been looked at for %s or more days", violations[:pr][:count], options[:age])
+  puts format("%s: %s Pull requests have not been looked at for %s or more days", prefix, violations[:pr][:count], options[:age])
   violations[:pr][:urls].each do |url|
     puts url
   end
-  exitcode = 1
+  exitcode = options[:warn] ? 0 : 1
 end
 
 if violations[:issues][:count] > 0
-  puts format("ERROR: %s issues have not been looked at for %s or more days", violations[:issues][:count], options[:age])
+  puts format("%s: %s issues have not been looked at for %s or more days", prefix, violations[:issues][:count], options[:age])
   violations[:issues][:urls].each do |url|
     puts url
   end
-  exitcode = 1
+  exitcode = options[:warn] ? 0 : 1
 end 
 
 exit exitcode
