@@ -18,7 +18,7 @@
       - shell: |
           #!/bin/bash
           eval "$(direnv export bash)"
-          bundle exec rake spec
+          bundle exec rspec
       - shell: |
           #!/bin/bash
           cp /home/jenkins/kitchens/sensu.kitchen.yml .kitchen.azure.yml
