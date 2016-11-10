@@ -17,6 +17,7 @@
       - envrc-setup
       - shell: |
           #!/bin/bash
+          eval "$(direnv export bash)"
           bundle exec rake spec
       - shell: |
           #!/bin/bash
