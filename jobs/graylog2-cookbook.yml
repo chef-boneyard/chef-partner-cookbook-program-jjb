@@ -17,7 +17,7 @@
       - chef-exec-rake-spec
       - shell: |
           cp /home/jenkins/kitchens/graylog2.kitchen.yml .kitchen.azure.yml
-          KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test
+          KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen test -c 3
     wrappers:
       - workspace-cleanup
       - release:
