@@ -1,0 +1,44 @@
+- job:
+    name: gocd-cookbook
+    project-type: freestyle
+    description: 'verify that the gocd-cookbook is in a state to push'
+    properties:
+      - github:
+          url: https://github.com/gocd/go-cookbook
+    scm:
+      - git:
+         url: https://github.com/gocd/go-cookbook
+         wipe-workspace: false
+         clean: true
+         branches:
+           - master
+    builders:
+      - check-markdown-files-are-there
+      - envrc-setup
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
+          bundle exec rake style
+      - shell: |
+          #!/bin/bash
+          eval "$(direnv export bash)"
+          bundle exec rake unit:chefspec
+    wrappers:
+      - workspace-cleanup
+      - release:
+          keep-forever: false
+      - ansicolor
+    triggers:
+      - timed: "@midnight"
+    publishers:
+      - slack:
+          team-domain: 'chefio'
+          auth-token: 'SLACK-AUTH-TOKEN'
+          build-server-url: 'https://jenkins-01.eastus.cloudapp.azure.com/'
+          room: '#cookbook-partner-prog'
+      - post-tasks:
+        - matches:
+          - log-text: "Class: Kitchen::ActionFailed"
+          script: |
+              #!/bin/bash
+              KITCHEN_YAML=".kitchen.azure.yml" chef exec kitchen destroy all
