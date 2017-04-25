@@ -14,6 +14,7 @@
       - envrc-setup
       - shell: |
           #!/bin/bash
+          eval "$(direnv export bash)"
           cp /home/jenkins/secrets.yml .
           cp /home/jenkins/jenkins_jobs.ini ../
           mkdir jobs/temp
